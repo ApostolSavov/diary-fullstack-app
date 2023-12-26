@@ -1,0 +1,1 @@
+export type Hash = Record<string, unknown>
