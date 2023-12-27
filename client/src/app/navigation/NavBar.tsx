@@ -1,5 +1,6 @@
 import InfoRoundedIcon from '@mui/icons-material/InfoRounded'
 import PersonAddAltRoundedIcon from '@mui/icons-material/PersonAddAltRounded'
+import LoginRoundedIcon from '@mui/icons-material/LoginRounded'
 import { AppBar } from '@mui/material'
 import LogoMain from 'app/common/components/LogoMain'
 import NavLink from 'app/navigation/NavLink'
@@ -7,11 +8,16 @@ import routes from 'app/routes'
 import { customSpacing } from 'app/uiVars'
 import { CSSProperties } from 'react'
 
+type Props = {
+  isAuth: boolean
+}
+
 const styles: CSSProperties = {
   height: customSpacing.navBarHeight,
 }
 
-const NavBar = () => {
+const NavBar = (props: Props) => {
+  const { isAuth } = props
 
   return (
     <AppBar
@@ -26,7 +32,18 @@ const NavBar = () => {
           />
         </div>
 
+        {isAuth && (
+          'Im logged in'
+        )}
+
         <div className='flex'>
+          <NavLink
+            to={routes.login}
+            icon={<LoginRoundedIcon />}
+          >
+            Log In
+          </NavLink>
+
           <NavLink
             to={routes.register}
             icon={<PersonAddAltRoundedIcon />}

@@ -1,8 +1,10 @@
 import Footer from 'app/Footer'
 import RegisterRoute from 'app/Register/RegisterRoute'
+import LoginRoute from 'app/Login/LoginRoute'
 import NavBar from 'app/navigation/NavBar'
 import { customSpacing } from 'app/uiVars'
 import { Route, Routes } from 'react-router-dom'
+import { useReadLocalStorage } from 'app/common/hooks/useReadLocalStorage'
 
 const { navBarHeight, footerHeight } = customSpacing
 
@@ -12,14 +14,18 @@ const style = {
 }
 
 const App = () => {
+  const userData = useReadLocalStorage('user')
+  //add middleware to chck and get user token, add it to every request
 
   return (
     <>
-      <NavBar />
+      <NavBar isAuth={!!userData} />
 
       <div style={style}>
         <Routes>
           <Route path='/' element={<div>Home</div>} />
+
+          <Route path='/login' element={<LoginRoute />} />
 
           <Route path='/register' element={<RegisterRoute />} />
 

@@ -9,3 +9,10 @@ export type QueryResult = {
   isError: boolean
   isSuccess: boolean
 }
+
+export type AuthResponse = {
+  _id: string
+  name: string
+  email: string
+  accessToken: string
+}

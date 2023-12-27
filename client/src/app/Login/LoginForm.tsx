@@ -1,33 +1,34 @@
-import { useRegisterUserMutation } from 'app/common/api/diaryApi'
+import { useLoginUserMutation } from 'app/common/api/diaryApi'
 import Button from 'app/common/components/Button'
 import TextInput from 'app/common/components/TextInput'
 import notify from 'app/common/services/notify'
 import { QueryResult } from 'app/common/types'
 import routes from 'app/routes'
 import { useForm } from 'react-hook-form'
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from 'react-router'
 
 
-const RegisterForm = () => {
+
+const LoginForm = () => {
   const {
     register,
     handleSubmit,
   } = useForm()
 
-  const [registerUser, { error, isError, isLoading, isSuccess }] = useRegisterUserMutation<QueryResult>()
+  const [loginUser, { error, isError, isLoading, isSuccess }] = useLoginUserMutation<QueryResult>()
   const navigate = useNavigate()
 
   if (isError) {
     notify.error(`An error occurred: ${error.msg || 'unknown error'}`)
   }
   if (isSuccess) {
-    notify.success('Successfully registered!')
+    notify.success('Successfully logged in!')
     navigate(routes.home)
   }
 
   return (
     <form
-      onSubmit={handleSubmit((data) => registerUser(data))}
+      onSubmit={handleSubmit((data) => loginUser(data))}
       className='flex flex-col gap-4'
     >
       <TextInput
@@ -38,15 +39,9 @@ const RegisterForm = () => {
         type={'email'}
       />
       <TextInput
-        registerInput={() => register('name')}
-        label="Name"
-        placeholder='Please enter your name...'
-        required
-      />
-      <TextInput
         registerInput={() => register('password')}
         label="Password"
-        placeholder='Please enter a password...'
+        placeholder='Please enter your password...'
         type='password'
         required
       />
@@ -54,7 +49,7 @@ const RegisterForm = () => {
         type={'submit'}
         disabled={isLoading}
       >
-        Register
+        Login
       </Button>
 
 
@@ -62,4 +57,4 @@ const RegisterForm = () => {
   )
 }
 
-export default RegisterForm
+export default LoginForm
