@@ -18,11 +18,13 @@ export const fontSizes = {
   xxl: 20
 }
 
-export const customSpacing = {
+export const layoutSpacing = {
   navBarHeight: 60,
   footerHeight: 40
 }
 
 export default {
-  colors
+  colors,
+  fontSizes,
+  layoutSpacing
 }

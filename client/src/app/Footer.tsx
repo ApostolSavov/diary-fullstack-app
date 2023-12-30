@@ -1,6 +1,6 @@
 import LogoMain from 'app/common/components/LogoMain'
 import { toClassName } from 'app/common/utils/toClassName'
-import { customSpacing } from 'app/uiVars'
+import { layoutSpacing } from 'app/uiVars'
 
 const className = toClassName(
   'bg-slate-500 text-white',
@@ -8,7 +8,7 @@ const className = toClassName(
 )
 
 const style = {
-  height: customSpacing.footerHeight
+  height: layoutSpacing.footerHeight
 }
 
 const Footer = () => {

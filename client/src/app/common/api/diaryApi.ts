@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { AuthResponse } from 'app/common/types'
-import { loadUser } from 'app/common/utils/authUtils'
+import { loadLocalUserData } from 'app/common/utils/authUtils'
 
 const defaultHeaders = {
   "Content-type": "application/json",
@@ -8,7 +8,20 @@ const defaultHeaders = {
 
 export const diaryApi = createApi({
   reducerPath: 'diaryApi',
-  baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:5000' }),
+  baseQuery: fetchBaseQuery({
+    baseUrl: 'http://localhost:5000',
+    prepareHeaders: (headers) => {
+      const token = localStorage.getItem('user')
+      //create util for getting this safely
+
+      if (token) {
+        headers.set('Authorization', `Bearer ${token}`)
+      }
+
+      return headers
+    },
+
+  }),
   endpoints: (builder) => ({
     registerUser: builder.mutation({
       query: (data) => ({
@@ -20,7 +33,7 @@ export const diaryApi = createApi({
         },
       }),
       transformResponse: (data: AuthResponse) => {
-        loadUser(data)
+        loadLocalUserData(data)
       }
     }),
     loginUser: builder.mutation({
@@ -33,7 +46,7 @@ export const diaryApi = createApi({
         },
       }),
       transformResponse: (data: AuthResponse) => {
-        loadUser(data)
+        loadLocalUserData(data)
       }
     })
   })

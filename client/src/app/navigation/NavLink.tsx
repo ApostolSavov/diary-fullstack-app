@@ -3,7 +3,8 @@ import { ReactNode } from 'react'
 import { NavLink as RouterNavLink } from 'react-router-dom'
 
 type Props = {
-  to: string
+  to?: string
+  onClick?: () => void
   icon?: JSX.Element
   children?: ReactNode
 }
@@ -16,7 +17,22 @@ const className = toClassName(
 
 
 const NavLink = (props: Props) => {
-  const { to, icon, children } = props
+  const { to, onClick, icon, children } = props
+
+  if (!to) {
+    return (
+      <div
+        onClick={onClick}
+        className={toClassName(
+          className,
+          'hover:cursor-pointer'
+        )}
+      >
+        {icon}
+        {children}
+      </div>
+    )
+  }
 
   return (
     <RouterNavLink
