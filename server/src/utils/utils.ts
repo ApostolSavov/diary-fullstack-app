@@ -1,4 +1,6 @@
+import User from 'models/User'
 import { Error } from 'mongoose'
+import { Hash } from 'types/common'
 
 
 const parseError = (error: Error) => {
@@ -16,7 +18,14 @@ const parseError = (error: Error) => {
   }
 }
 
+const userExists = async (decodedToken: Hash | null | string) => {
+  if (decodedToken && typeof decodedToken !== 'string') {
+    return await User.findById(decodedToken._id)
+  }
+  return false
+}
 
 export {
   parseError,
+  userExists
 }

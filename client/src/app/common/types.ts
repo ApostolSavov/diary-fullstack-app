@@ -16,3 +16,9 @@ export type AuthResponse = {
   email: string
   accessToken: string
 }
+
+export type LocalUser = {
+  name?: string
+  email?: string
+  token?: string
+}

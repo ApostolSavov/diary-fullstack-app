@@ -4,6 +4,7 @@ import mongoose from "mongoose"
 import dotenv from "dotenv"
 
 import authController from 'controllers/authController'
+import diaryController from 'controllers/diaryController'
 
 
 const app = express()
@@ -17,6 +18,7 @@ app.use(cors())
 app.use(express.json())
 
 app.use('/auth', authController)
+app.use('/diary', diaryController)
 
 app.get('/ping', (_req, res) => res.json('it works.'))
 

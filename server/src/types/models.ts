@@ -5,3 +5,12 @@ export type UserType = Document & {
   email: string
   password: string
 }
+
+export type DiaryEntryType = Document & {
+  title: string
+  content: string
+  imageUrl: string
+  favouriteCount: number
+  createdAt: string
+  ownerId: string
+}

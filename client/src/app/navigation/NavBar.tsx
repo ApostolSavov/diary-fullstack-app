@@ -2,6 +2,7 @@ import InfoRoundedIcon from '@mui/icons-material/InfoRounded'
 import LoginRoundedIcon from '@mui/icons-material/LoginRounded'
 import MeetingRoomIcon from '@mui/icons-material/MeetingRoom'
 import PersonAddAltRoundedIcon from '@mui/icons-material/PersonAddAltRounded'
+import CreateIcon from '@mui/icons-material/Create'
 import { AppBar } from '@mui/material'
 import LogoMain from 'app/common/components/LogoMain'
 import { clearLocalUserData } from 'app/common/utils/authUtils'
@@ -55,12 +56,21 @@ const NavBar = (props: Props) => {
             )}
 
             {isAuth && (
-              <NavLink
-                onClick={clearLocalUserData}
-                icon={<MeetingRoomIcon />}
-              >
-                Logout
-              </NavLink>
+              <>
+                <NavLink
+                  to={routes.createEntry}
+                  icon={<CreateIcon />}
+                >
+                  Create
+                </NavLink>
+
+                <NavLink
+                  onClick={clearLocalUserData}
+                  icon={<MeetingRoomIcon />}
+                >
+                  Logout
+                </NavLink>
+              </>
             )}
 
             <NavLink

@@ -5,6 +5,7 @@ import NavBar from 'app/navigation/NavBar'
 import { layoutSpacing } from 'app/uiVars'
 import { Route, Routes } from 'react-router-dom'
 import { useReadLocalStorage } from 'app/common/hooks/useReadLocalStorage'
+import CreateEntryRoute from 'app/diaryEntries/CreateEntry/CreateEntryRoute'
 
 const { navBarHeight, footerHeight } = layoutSpacing
 
@@ -27,6 +28,8 @@ const App = () => {
           <Route path='/login' element={<LoginRoute />} />
 
           <Route path='/register' element={<RegisterRoute />} />
+
+          <Route path='/entries/create' element={<CreateEntryRoute />} />
 
           <Route path='/about' element={<div>About</div>} />
         </Routes>
