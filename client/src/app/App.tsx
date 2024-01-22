@@ -6,6 +6,7 @@ import { layoutSpacing } from 'app/uiVars'
 import { Route, Routes } from 'react-router-dom'
 import { useReadLocalStorage } from 'app/common/hooks/useReadLocalStorage'
 import CreateEntryRoute from 'app/diaryEntries/CreateEntry/CreateEntryRoute'
+import env from "react-dotenv"
 
 const { navBarHeight, footerHeight } = layoutSpacing
 
@@ -16,6 +17,8 @@ const style = {
 
 const App = () => {
   const userData = useReadLocalStorage('user')
+
+  console.log(env)
 
   return (
     <>

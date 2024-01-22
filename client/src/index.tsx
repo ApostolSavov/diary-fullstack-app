@@ -9,7 +9,6 @@ import './styles.css'
 import theme from './theme'
 import NotifContainer from 'app/NotifContainer'
 
-
 const rootEl = document.getElementById('root') as HTMLElement
 const root = createRoot(rootEl)
 root.render(
