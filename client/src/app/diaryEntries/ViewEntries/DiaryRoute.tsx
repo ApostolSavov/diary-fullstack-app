@@ -6,6 +6,7 @@ import TimelineContent from '@mui/lab/TimelineContent'
 import TimelineDot from '@mui/lab/TimelineDot'
 import Button from 'app/common/components/Button'
 
+//testing
 export default function BasicTimeline() {
   return (
     <Timeline>
@@ -16,13 +17,7 @@ export default function BasicTimeline() {
         </TimelineSeparator>
         <TimelineContent>
           <Button>
-            Hello
-          </Button>
-          <Button>
-            Hello
-          </Button>
-          <Button>
-            Hello
+            Testing
           </Button>
         </TimelineContent>
       </TimelineItem>
